@@ -1,0 +1,21 @@
+{
+  "name": "RTC",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "jquery": "^3.2.1",
+    "peerjs": "^0.3.14",
+    "uid": "0.0.2",
+    "webpack": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "jquery": "^3.2.1",
+    "simple-peer": "^8.1.1"
+  }
+}

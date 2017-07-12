@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebRTC</title>
+</head>
+<body>
+	<h1>Video streaming</h1>
+	<video id="localstream" controls width="400"></video>
+	<br/>
+	<video id="friendstream" controls width="400"></video>
+	<br/>
+	<label>My Connection Token</label>
+	<br/>
+	<textarea rows="3" cols="100" id="txtMySignal"></textarea>
+		<br/>
+	<input type="text" placeholder="Your friend's Signal" id="txtFriendSignal"/>
+	<br/>
+	<button id="btnConnect">Connect Stream</button>
+	<script type="text/javascript" src="bundle.js"></script>
+</body>
+</html>
