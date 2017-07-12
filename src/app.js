@@ -51,7 +51,7 @@ function getPeer(){
 	return id;
 }
 
-let customConfig;
+var customConfig;
 
   $.ajax ({
              url: "https://global.xirsys.net/_turn/rtc/",
@@ -63,14 +63,13 @@ let customConfig;
              success: function (res){
                // console.log("ICE List: "+res.v.iceServers);
                console.log('res',res);
-             customConfig= res.v;
+             customConfig= res.v.iceServers;
              }
          });
 
-const connectObj = {host:'streamlmc.herokuapp.com', port: 443, secure: true, key: 'peerjs', config:customConfig};
+var connectObj = {host:'streamlmc.herokuapp.com', port: 443, secure: true, key: 'peerjs', config:customConfig};
 
-
-const peer = new Peer(getPeer(),connectObj);
+var peer = new Peer(getPeer(),connectObj);
 
 
 $('#btnCall').click(()=>{
