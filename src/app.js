@@ -70,7 +70,7 @@ let customConfig;
 const connectObj = {host:'streamlmc.herokuapp.com', port: 443, secure: true, key: 'peerjs', config:customConfig};
 
 
-const peer = Peer(getPeer(),connectObj);
+const peer = new Peer(getPeer(),connectObj);
 
 
 $('#btnCall').click(()=>{
