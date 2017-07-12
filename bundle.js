@@ -1610,11 +1610,12 @@ var customConfig;
              success: function (res){
                // console.log("ICE List: "+res.v.iceServers);
                console.log('res',res);
-             customConfig= res.v.iceServers;
+             customConfig= res.v;
              }
          });
 
 var connectObj = {host:'streamlmc.herokuapp.com', port: 443, secure: true, key: 'peerjs', config:customConfig};
+console.log(connectObj);
 
 var peer = new Peer(getPeer(),connectObj);
 
