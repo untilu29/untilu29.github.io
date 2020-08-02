@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Unique Permutations</h2>
+
+Input: 
+<input type="number" id="maxNumber"  value="3"/>
+<br/>
+<button type="button" onclick="printResults()">Calculate</button> 
+ <br/><br/>
+
+<textarea id="textArea" rows="50" cols="100">
+</textarea>
+
+<script>
+function swap(a, i, j) {
+    const t = a[i];
+    a[i] = a[j];
+    a[j] = t;
+}
+
+function reverseSuffix(a, start) {
+    if (start === 0) {
+        a.reverse();
+    }
+    else {
+        let left = start;
+        let right = a.length - 1;
+
+        while (left < right)
+            swap(a, left++, right--);
+    }
+}
+
+function nextPermutation(a) {
+    const reversedIndices = [...Array(a.length).keys()].reverse();
+    const i = reversedIndices.slice(1).find(i => a[i] < a[i + 1]);
+
+    if (i === undefined) {
+        a.reverse();
+        return false;
+    } 
+
+    const j = reversedIndices.find(j => a[i] < a[j]);
+    swap(a, i, j);
+    reverseSuffix(a, i + 1);
+    return true;
+}
+
+function* uniquePermutations(a) {
+    const b = a.slice().sort();
+
+    do {
+        yield b.slice();
+    } while (nextPermutation(b));
+}
+
+
+function printUniquePermutations(maxNumber){
+  const arr = Array.from({length: maxNumber}, (_, index) => index + 1);
+  ps = Array.from(uniquePermutations(arr));
+  return ps.map(p => p.join(""))
+}
+
+function printResults(){
+	const maxNumber =  parseInt(document.getElementById("maxNumber").value)
+	document.getElementById("textArea").innerHTML = printUniquePermutations(maxNumber);
+}
+</script>
+
+</body>
+</html>
