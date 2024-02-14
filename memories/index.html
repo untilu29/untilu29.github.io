@@ -9,6 +9,10 @@
 			font-family: digit;
 			src: url('digital.ttf') format("truetype");
 		}
+
+		.d-none {
+			display: none;
+		}
 	</style>
 	<link href="css/default.css" type="text/css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest/dist/umd/supabase.min.js"></script>
@@ -33,7 +37,7 @@
 				</div>
 			</div>
 		</div>
-		<div id="code">
+		<div id="code" class="d-none">
 			<span class="comments">##</span><br/>
 			<span class="comments"># I am a programmer,</span><br/>
 			<span class="comments"># so I write code to celebrate Valentine's Day in coder's way.</span><br/>
@@ -120,6 +124,7 @@
 			.catch(error => {
 				console.log(error);
 			}).finally(() => {
+				document.getElementById('code').classList.remove('d-none');
 				if (!document.createElement('canvas').getContext) {
 					var msg = document.createElement("div");
 					msg.id = "errorMsg";
