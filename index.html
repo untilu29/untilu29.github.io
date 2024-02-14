@@ -1,18 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>WebRTC</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <title>Minh Châu - Mạnh Chức</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest/dist/umd/supabase.min.js"></script>
 </head>
 <body>
-	<h3 id='peer-id'>My peer id: </h3>
-	<video id="localstream" controls width="400"></video>
-	<br/>
-	<video id="friendstream" controls width="400"></video>
-	<br/>
-	<input type="text" placeholder="Your friend's id" id="txtFriendId"/>
-	<br/>
-	<button id="btnCall">Call</button>
-	<script type="text/javascript" src="bundle.js"></script>
+    <div class="background"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">I love you 💗</h5>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+                    <p>Thank you for accepting me 😚. MC LOVE MC.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Box  -->
+    <div id="box" class="d-none">
+        <p>Làm người yêu Anh nhé baby?</p>
+        <div>
+            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-success"
+                onclick="process()">Tớ đồng ý 😍</button>
+            <button type="button" class="btn btn-outline-danger" style="font-size: xx-small;" onclick="changeBtn()">Ghét, ko yêu 😤</button>
+        </div>
+    </div>
+
+    <!-- Add this style in your CSS or in a <style> tag in your HTML -->
+    <style>
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+        }
+    </style>
+
+    <!-- Add this div in your HTML -->
+    <div id="overlay"></div>
+
+    <script>
+        var supabase;
+        window.onload = function () {
+            const supabaseUrl = 'https://oxrbcljidfxcexxsbqze.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94cmJjbGppZGZ4Y2V4eHNicXplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc3MzQzMjUsImV4cCI6MjAyMzMxMDMyNX0.c8az6xIXs7fv58Mqy14hd9FLBvRNIlMT9PqYcocWo4w';
+            supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+            supabase
+                .from('timeline')
+                .select('*')
+                .eq('sprint', 'acceptedGirlFriend')
+                .then(response => {
+                    if (response.data.length > 0) {
+                        location.replace('/memories/');
+                    }
+
+                    else {
+                        document.getElementById('overlay').style.display = 'none';
+                        document.getElementById('box').classList.remove('d-none');
+                    }
+
+                })
+                .catch(error => {
+                    document.getElementById('box').classList.remove('d-none');
+                });
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-lpyLfhYuitXl2zRZ5Bn2fqnhNAKOAaM/0Kr9laMspuaMiZfGmfwRNFh8HlMy49eQ"
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
+
 </html>
