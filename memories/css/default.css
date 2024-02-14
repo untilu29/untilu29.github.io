@@ -1,0 +1,241 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #fdc9d1;
+    font-size: 12px;
+    overflow: auto
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    width: auto !important;
+    height: auto !important;
+    margin: 10px 5px 0 !important;
+}
+
+#mainDiv {
+    width: 100%;
+    height: 100%
+}
+
+#loveHeart {
+    width: 670px;
+    height: 620px;
+    position: relative;
+    margin: 0 auto;
+}
+
+#garden {
+    width: 100%;
+    height: 100%
+}
+
+#elapseClock {
+    text-align: right;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px
+}
+
+#words {
+    font-family: "sans-serif";
+    width: auto;
+    font-size: 24px;
+    color: #666
+}
+
+
+@media (max-width: 395px){ 
+    #words {
+        font-size: 16px;
+    }
+
+    #loveu {
+        font-size: 16px;
+        margin-top: 32px;
+        margin-right: 70px;
+    }
+
+    #loveu .signature {
+        margin-top: 0px;
+        font-size: 16px;
+    }
+
+    #elapseClock .digit {
+        font-size: 30px
+    }
+}
+
+/* Extra small devices (phones, less than 576px) */
+@media (min-width: 395px) and (max-width: 575.98px) { 
+    #words {
+        font-size: 18px;
+    }
+
+    #loveu {
+        font-size: 16px;
+        margin-top: 32px;
+        margin-right: 80px;
+    }
+
+    #loveu .signature {
+        margin-top: 0px;
+        font-size: 18px;
+    }
+
+    #elapseClock .digit {
+        font-size: 32px
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    #words {
+        font-size: 20px;
+    }
+
+    #loveu {
+        font-size: 20px;
+        margin-top: 40px;
+        margin-right: 85px;
+    }
+
+    #loveu .signature {
+        margin-top: 0px;
+        font-size: 18px;
+    }
+
+    #elapseClock .digit {
+        font-size: 34px
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #loveu {
+        font-size: 20px;
+        margin-right: 85px;
+
+        margin: 60px auto;
+    }
+
+    #words {
+        font-size: 23px;
+    }
+
+    #elapseClock .digit {
+        font-size: 38px
+    }
+
+    #loveu .signature {
+        margin-top: 12px;
+        font-size: 22px;
+    }      
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    #words {
+        font-size: 23px;
+    }
+
+    #elapseClock .digit {
+        font-size: 38px
+    }
+
+    #loveu .signature {
+        margin-top: 12px;
+        font-size: 22px;
+    }  
+    
+    #loveu {
+        margin-top: 75px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #words {
+        font-size: 24px;
+    }
+
+    #loveu {
+        margin-top: 78px;
+    }
+
+    #elapseClock .digit {
+        font-size: 38px
+    }
+}
+
+#messages {
+    display: none
+}
+
+#elapseClock .digit {
+    font-family: "digit";
+    /* font-size: 36px */
+}
+
+#loveu {
+    padding: 5px;
+    text-align: right;
+    display: none
+}
+
+
+#clickSound {
+    display: none
+}
+
+#code {
+    float: left;
+    width: 440px;
+    margin-top: 60px !important;
+    height: 400px;
+    color: #333;
+    font-family: "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier New", "sans-serif";
+    font-size: 12px
+}
+
+#code .string {
+    color: #2a36ff
+}
+
+#code .keyword {
+    color: #7f0055;
+    font-weight: bold
+}
+
+#code .placeholder {
+    margin-left: 15px
+}
+
+#code .space {
+    margin-left: 7px
+}
+
+#code .comments {
+    color: #3f7f5f
+}
+
+#copyright {
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+    color: #666
+}
+
+#errorMsg {
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+    position: absolute;
+    top: 100px;
+    left: 0
+}
+
+#copyright a {
+    color: #666
+}

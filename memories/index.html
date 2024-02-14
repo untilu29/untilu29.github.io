@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Our Love Story</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<style type="text/css">
+		@font-face {
+			font-family: digit;
+			src: url('digital.ttf') format("truetype");
+		}
+	</style>
+	<link href="css/default.css" type="text/css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest/dist/umd/supabase.min.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/garden.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+</head>
+
+<body>
+<div id="mainDiv">
+	<div id="content">
+		<div id="loveHeart">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					Minh Châu, I have fallen in love with you for
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					Love u forever and ever.<br/>
+					<div class="signature">- Mạnh Chức</div>
+				</div>
+			</div>
+		</div>
+		<div id="code">
+			<span class="comments">##</span><br/>
+			<span class="comments"># I am a programmer,</span><br/>
+			<span class="comments"># so I write code to celebrate Valentine's Day in coder's way.</span><br/>
+			<span class="comments">##</span><br/>
+			i = Boy(<span class="string">"Mạnh Chức"</span>);<br/>
+			u = Girl(<span class="string">"Minh Châu"</span>);<br/>
+			<span class="comments"># Jan 2, 2024, first dating with you. </span><br/>
+			i.meet(u)<br/>
+			<span class="comments"># Afterwards, I've fallen in love with you. </span><br/>
+			i.fallInLove(u)<br/>
+			<span class="comments"># Jan 4, 2024, we enjoyed first hornor movie of 2024.</span><br/>
+			u.enjoyWatchingMovie(i)<br/>
+			<span class="comments"># Then, I missed you every day because of business trip and YEP in Thailand.</span><br/>
+			i.missed(u)<br/>
+			<span class="comments"># After returning from Thailand, we spent happiness life every day.</span><br/>
+			happy(u, i)<br/>
+			<span class="comments"># We enjoy eating together.</span><br/>
+			study(u, i)<br/>
+			<span class="comments"># We enjoy time in Hoi An old town together.</span><br/>
+			traveling(u, i)<br/>
+			<span class="comments"># We enjoy shopping together.</span><br/>
+			shopping(u, i)<br/>
+			<span class="comments"># Sometimes there are a few conflicts between us.</span><br/>
+			conflict(u, i, sometimes=<span class="keyword">True</span>)<br/>
+			<span class="comments"># But we are getting more and more in harmony together.</span><br/>
+			u.inHarmonyWith(i) <br/>
+			i.inHarmonyWith(u) <br/>
+
+            <br id="extension"/>
+
+			<span class="comments"># You are the greatest love of my life.</span><br/>
+			while <span class="keyword">True</span>:<br/>
+			<span class="placeholder"></span><span class="keyword">if</span> u.with(i):<br/>
+			<span class="placeholder"></span><span class="placeholder"></span>u = everything<br/>
+			<span class="placeholder"></span><span class="keyword">else</span>:<br/>
+			<span class="placeholder"></span><span class="placeholder"></span>everything = u<br/>
+			<span class="comments"># Waiting me marries you, we will be the happiest couple in the world.</span><br/>
+			i.marry(u, in_the_future=<span class="keyword">True</span>)<br/>
+			i.live_happily_forever_with(u)<br/>
+			<span class="comments"># I love you forever.</span><br/>
+		</div>
+	</div>
+</div>
+
+<audio autoplay id="audio">
+	<source src="../music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+	var supabase;
+	window.onload = function () {
+		const supabaseUrl = 'https://oxrbcljidfxcexxsbqze.supabase.co';
+		const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94cmJjbGppZGZ4Y2V4eHNicXplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc3MzQzMjUsImV4cCI6MjAyMzMxMDMyNX0.c8az6xIXs7fv58Mqy14hd9FLBvRNIlMT9PqYcocWo4w';
+		supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+		supabase
+			.from('timeline')
+			.select('*')
+			.eq('sprint', 'acceptedGirlFriend')
+			.then(response => {
+				if (response.data.length > 0) {
+					let date = new Date(response.data[0].time);
+					let day = String(date.getDate()).padStart(2, '0');
+					let month = String(date.getMonth() + 1).padStart(2, '0'); // January is 0!
+					let year = date.getFullYear().toString().substr(-2);
+					let hours = String(date.getHours()).padStart(2, '0');
+					let minutes = String(date.getMinutes()).padStart(2, '0');
+					let seconds = String(date.getSeconds()).padStart(2, '0');
+
+					let time = `${day}-${month}-${year}, ${hours}:${minutes}:${seconds}`;
+					// Create the content
+					let content = `
+				<br/>	
+				<span class="comments"># Finally, I've declared my love to you.</span><br/>
+				i.confessed_my_love(u) <br/>
+				<span class="comments"># You accepted my love at ${time}.</span><br/>
+				u.accepted_my_love(i) <br/>
+				<br/>
+			`;
+
+					document.getElementById('extension').insertAdjacentHTML('afterend', content);
+				}
+			})
+			.catch(error => {
+				console.log(error);
+			}).finally(() => {
+				if (!document.createElement('canvas').getContext) {
+					var msg = document.createElement("div");
+					msg.id = "errorMsg";
+					msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+					document.body.appendChild(msg);
+					$("#code").css("display", "none")
+					// $("#copyright").css("position", "absolute");
+					// $("#copyright").css("bottom", "10px");
+					document.execCommand("stop");
+				} else {
+					setTimeout(function () {
+						startHeartAnimation();
+					}, 5000);
+
+					timeElapse(together);
+					setInterval(function () {
+						timeElapse(together);
+					}, 500);
+
+					adjustCodePosition();
+					$("#code").typewriter();
+				}
+			});
+	};
+</script>
+
+<script type="text/javascript">
+		var offsetX = $("#loveHeart").width() / 2;
+		var offsetY = $("#loveHeart").height() / 2 - 55;
+		var together = new Date();
+
+		together.setFullYear(2024, 0, 2);
+		together.setHours(19);
+		together.setMinutes(10);
+		together.setSeconds(0);
+		together.setMilliseconds(0);
+</script>
+
+<!-- <footer id="copyright">
+	Copyright © 2024 <a href='https://manhchuc.com'>manhchuc.com</a>
+</footer> -->
+</body>
+</html>
